@@ -4,6 +4,7 @@ import time
 
 DATA_FILE = "students.json"
 
+==================MAARIT=========================
 
 def create_data_file_if_missing(): #maarit 
     if not os.path.exists(DATA_FILE):
@@ -20,6 +21,7 @@ def save_students(students): #maarit
     with open(DATA_FILE, "w") as file:
         json.dump(students, file, indent=4)
 
+======================MARIS===========================
 
 def login():
     username = "admin"
@@ -87,7 +89,8 @@ def add_grade():
         print("Grade added.")
     else:
         print("Student not found.")
-
+        
+==========================ANH====================
 
 def search_student():
     student_number = input("Enter student number to search for: ")
@@ -152,6 +155,7 @@ def count_total_grades():
 
     print(f"Total number of grades: {total}")
 
+===========================KATA=============================
 
 def display_course_summary():
     students = load_students()
