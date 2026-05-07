@@ -5,7 +5,7 @@ import time
 DATA_FILE = "students.json"
 
 
-def create_data_file_if_missing():
+def create_data_file_if_missing(): #maarit 
     if not os.path.exists(DATA_FILE):
         with open(DATA_FILE, "w") as file:
             json.dump([], file)
