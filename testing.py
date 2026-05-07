@@ -11,12 +11,12 @@ def create_data_file_if_missing(): #maarit
             json.dump([], file)
 
 
-def load_students():
+def load_students(): #maarit 
     with open(DATA_FILE, "r") as file:
         return json.load(file)
 
 
-def save_students(students):
+def save_students(students): #maarit 
     with open(DATA_FILE, "w") as file:
         json.dump(students, file, indent=4)
 
