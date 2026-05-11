@@ -10,16 +10,26 @@ def create_data_file_if_missing(): #why create a file everytime the code is run?
     if not os.path.exists(DATA_FILE):
         with open(DATA_FILE, "w") as file:
             json.dump([], file) #toberemove
-
+            
 def load_students():  
     with open(DATA_FILE, "r") as file:
         return json.load(file)
-
 
 def save_students(students): 
     with open(DATA_FILE, "w") as file:
         json.dump(students, file, indent=4)
 
+OPTION2:
+def load_students():
+    try:
+        with open(DATA_FILE, "r") as file:
+            return json.load(file)
+    except (FileNotFoundError, json.JSONDecodeError): #runsEvenIfBrokenOREmpty as above the first one does the same/MN
+        return []
+
+def save_students(students):
+    with open(DATA_FILE, "w") as file:
+        json.dump(students, file, indent=4)
 ======================MARIS===========================
 
 def login():
@@ -194,7 +204,7 @@ def save_backup():
 
 
 def main():
-    create_data_file_if_missing()
+    create_data_file_if_missing() #this to be removed? just leave "login ()". I suggest removing this from the beginng/MN
     login()
 
     while True:
