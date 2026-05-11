@@ -19,7 +19,7 @@ def save_students(students):
     with open(DATA_FILE, "w") as file:
         json.dump(students, file, indent=4)
 
-OPTION2:
+OPTION2 - my suggestion:
 def load_students():
     try:
         with open(DATA_FILE, "r") as file:
