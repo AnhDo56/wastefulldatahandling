@@ -5,11 +5,11 @@ import time
 DATA_FILE = "students.json"
 
 ==================MAARIT=========================
-#remove
+#toberemove
 def create_data_file_if_missing(): #why create a file everytime the code is run?
     if not os.path.exists(DATA_FILE):
         with open(DATA_FILE, "w") as file:
-            json.dump([], file) #remove
+            json.dump([], file) #toberemove
 
 def load_students():  
     with open(DATA_FILE, "r") as file:
