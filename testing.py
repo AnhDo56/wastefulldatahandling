@@ -5,19 +5,18 @@ import time
 DATA_FILE = "students.json"
 
 ==================MAARIT=========================
-
-def create_data_file_if_missing(): #maarit 
+#remove
+def create_data_file_if_missing(): #why create a file everytime the code is run?
     if not os.path.exists(DATA_FILE):
         with open(DATA_FILE, "w") as file:
-            json.dump([], file)
+            json.dump([], file) #remove
 
-
-def load_students(): #maarit 
+def load_students():  
     with open(DATA_FILE, "r") as file:
         return json.load(file)
 
 
-def save_students(students): #maarit 
+def save_students(students): 
     with open(DATA_FILE, "w") as file:
         json.dump(students, file, indent=4)
 
