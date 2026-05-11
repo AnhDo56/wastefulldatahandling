@@ -204,7 +204,7 @@ def save_backup():
 
 
 def main():
-    create_data_file_if_missing() #this to be removed? just leave "login ()". I suggest removing this from the beginng/MN
+    create_data_file_if_missing() #this to be removed? just leave "login ()". Look the start,I suggest removing this from the beginng/MN
     login()
 
     while True:
