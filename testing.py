@@ -6,7 +6,7 @@ DATA_FILE = "students.json"
 
 ==================MAARIT=========================
 #toberemove
-def create_data_file_if_missing(): #why create a file everytime the code is run?
+def create_data_file_if_missing(): # Why create a file every time the code is run?
     if not os.path.exists(DATA_FILE):
         with open(DATA_FILE, "w") as file:
             json.dump([], file) #toberemove
