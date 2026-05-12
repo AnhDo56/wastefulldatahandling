@@ -35,7 +35,9 @@ def save_students(students):
 def login():
     username = "admin"
     password = "password"
-
+    
+ # Inefficiency: unbounded while True loop - no limit on login attempts
+ # Fix: replace with for attempt in range(3) to cap at 3 tries > limits attempts and does not loop forever 
     while True:
         given_username = input("Enter username: ")
         given_password = input("Enter password: ")
