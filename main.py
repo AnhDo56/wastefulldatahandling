@@ -140,7 +140,7 @@ def count_total_grades():
 
     total = 0
 
-    copied_students = []
+    # copied_students = [] -> Anh deleted this part, issue 4 solved
 
     for student in students:
         copied_students.append(student)
