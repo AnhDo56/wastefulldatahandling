@@ -126,8 +126,7 @@ def display_all_students():
 
     print("All students:")
     sorted_students = sorted(students, key=lambda student: student["name"]) #Anh - putting "sort" function outside of the loop so it can run once only to give thefinal result instead of each loop.
-    for i in range(len(students)):
-        student = sorted_students[i]
+     for student in sorted_students: # Anh - solved issue 3
 
         print(f"Student Number: {student['student_number']}")
         print(f"Name: {student['name']}")
