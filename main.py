@@ -126,7 +126,7 @@ def display_all_students():
 
     print("All students:")
     sorted_students = sorted(students, key=lambda student: student["name"]) #Anh - putting "sort" function outside of the loop so it can run once only to give thefinal result instead of each loop.
-     for student in sorted_students: # Anh - solved issue 3
+    for student in sorted_students: # Anh - solved issue 3
 
         print(f"Student Number: {student['student_number']}")
         print(f"Name: {student['name']}")
@@ -143,12 +143,14 @@ def count_total_grades():
     # copied_students = [] -> Anh deleted this part, issue 4 solved
 
     for student in students:
-        # copied_students.append(student) -> romoved - part of issue 4
-
-   # for student in copied_students: -> removed - part of issue 4
-       ''' for grade in student["grades"]:
-            total += 1 ''' # remove as the variable isn't used and only counted the existed grades - issue 5
         total += len(student["grades"])
+    # copied_students.append(student) -> removed - part of issue 4
+
+    # for student in copied_students: -> removed - part of issue 4
+    # for grade in student["grades"]:
+    #         total += 1
+    # remove as the variable isn't used and only counted the existed grades - issue 5
+        
 
     print(f"Total number of grades: {total}")
 
