@@ -143,9 +143,9 @@ def count_total_grades():
     # copied_students = [] -> Anh deleted this part, issue 4 solved
 
     for student in students:
-        copied_students.append(student)
+        # copied_students.append(student) -> romoved - part of issue 4
 
-    for student in copied_students:
+   # for student in copied_students: -> removed - part of issue 4
         for grade in student["grades"]:
             total += 1
 
