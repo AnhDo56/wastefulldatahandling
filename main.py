@@ -101,6 +101,7 @@ def search_student():
     for student in students:
         if student["student_number"] == student_number:
             found_student = student
+            break # Anh - added
 
     end_time = time.perf_counter()
 
