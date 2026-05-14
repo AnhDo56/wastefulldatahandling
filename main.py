@@ -146,8 +146,9 @@ def count_total_grades():
         # copied_students.append(student) -> romoved - part of issue 4
 
    # for student in copied_students: -> removed - part of issue 4
-        for grade in student["grades"]:
-            total += 1
+       ''' for grade in student["grades"]:
+            total += 1 ''' # remove as the variable isn't used and only counted the existed grades - issue 5
+        total += len(student["grades"])
 
     print(f"Total number of grades: {total}")
 
