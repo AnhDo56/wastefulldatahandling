@@ -193,13 +193,13 @@ def display_course_summary():
         print(f"{course}: {count} grade(s)")
 
 
-def save_backup():
+def save_backup():    
     students = load_students()
 
-    json_text = json.dumps(students)
-    copied_students = json.loads(json_text)
+    json_text = json.dumps(students) #this seems a bit unnecessary, data is already on python form. this changes the form to json text. WHY? :)
+    copied_students = json.loads(json_text) #this seems a bit unnecessary, as JSON string → Python
 
-    with open("students_backup.json", "w") as file:
+    with open("students_backup.json", "w") as file:  #lets just leave this? 
         json.dump(copied_students, file, indent=4)
 
     print("Backup saved.")
