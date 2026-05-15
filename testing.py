@@ -113,7 +113,9 @@ def add_grade():
     grade = input("Enter grade: ")
 
     students = load_students()
-
+    
+# Inefficiency 1: "for a student" is a syntax error, crashes the program
+    # Inefficiency 2: loop continues after finding the student, even though there can only be one match
     student_found = False
 
     for a student in students:
@@ -124,6 +126,24 @@ def add_grade():
             })
             student_found = True
 
+    if student_found:
+        save_students(students)
+        print("Grade added.")
+    else:
+        print("Student not found.")
+
+#OPTION1
+    # Fixed syntax: "for student" instead of "for a student"
+    # break stops the loop immediately after finding the student
+    student_found = False
+    for student in students:
+        if student["student_number"] == student_number:
+            student["grades"].append({
+                "course": course,
+                "grade": grade
+            })
+            student_found = True
+            break  # no need to keep looping, student numbers are unique
     if student_found:
         save_students(students)
         print("Grade added.")
