@@ -32,12 +32,12 @@ def save_students(students):
         json.dump(students, file, indent=4)
 ======================MARIS===========================
 
+ # Inefficiency: unbounded while True loop - no limit on login attempts
+ # Fix: replace with for attempt in range(3) to cap at 3 tries > limits attempts and does not loop forever 
 def login():
     username = "admin"
     password = "password"
     
- # Inefficiency: unbounded while True loop - no limit on login attempts
- # Fix: replace with for attempt in range(3) to cap at 3 tries > limits attempts and does not loop forever 
     while True:
         given_username = input("Enter username: ")
         given_password = input("Enter password: ")
@@ -48,14 +48,27 @@ def login():
         else:
             print("Incorrect username or password. Please try again.")
 
+#OPTION1 to fix the above code
+    # range(3) runs the loop exactly 3 times, then exits automatically
+    for attempt in range(3):
+        given_username = input("Enter username: ")
+        given_password = input("Enter password: ")
+        if given_username == username and given_password == password:
+            print("Login successful.")
+            return
+        else:
+            print("Incorrect username or password. Please try again.")
+    print("Too many failed attempts.")
+
 
 def add_student():
     student_number = input("Enter student number: ")
     name = input("Enter student name: ")
     contact = input("Enter student contact information: ")
-
     students = load_students()
-
+    
+ # Inefficiency: loop always checks every student even after a duplicate is found
+    # duplicate_found flag is also unnecessary extra code
     duplicate_found = False
     for student in students:
         if student["student_number"] == student_number:
@@ -77,6 +90,22 @@ def add_student():
 
     print("Student added.")
 
+# OPTION1
+    # any() stops searching the moment it finds a match, instead of always checking everyone
+    if any(s["student_number"] == student_number for s in students):
+        print("Student number already exists.")
+        return
+
+    new_student = {
+        "student_number": student_number,
+        "name": name,
+        "contact": contact,
+        "grades": []
+    }
+    students.append(new_student)
+    save_students(students)
+    print("Student added.")
+
 
 def add_grade():
     student_number = input("Enter student number: ")
@@ -84,7 +113,9 @@ def add_grade():
     grade = input("Enter grade: ")
 
     students = load_students()
-
+    
+# Inefficiency 1: "for a student" is a syntax error, crashes the program
+    # Inefficiency 2: loop continues after finding the student, even though there can only be one match
     student_found = False
 
     for a student in students:
@@ -95,6 +126,24 @@ def add_grade():
             })
             student_found = True
 
+    if student_found:
+        save_students(students)
+        print("Grade added.")
+    else:
+        print("Student not found.")
+
+#OPTION1
+    # Fixed syntax: "for student" instead of "for a student"
+    # break stops the loop immediately after finding the student
+    student_found = False
+    for student in students:
+        if student["student_number"] == student_number:
+            student["grades"].append({
+                "course": course,
+                "grade": grade
+            })
+            student_found = True
+            break  # no need to keep looping, student numbers are unique
     if student_found:
         save_students(students)
         print("Grade added.")
