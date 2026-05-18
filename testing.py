@@ -255,7 +255,7 @@ def save_backup():
 
 
 def main():
-    create_data_file_if_missing() #this to be removed? just leave "login ()". Look the beginning,I suggest removing it OR option 2/MN
+    create_data_file_if_missing() #this to be removed to avoid unnecssary file-system checks every time when starting the program.
     login()
 
     while True:
@@ -291,6 +291,29 @@ def main():
         else:
             print("Invalid choice.")
 
+# A dispatch dictionary instead of a long if/elif chain. Cleaner and easier to maintain. Reduces repetitiveness.    
+    
+    actions = {
+        "1": add_student,
+        "2": add_grade,
+        "3": search_student,
+        "4": display_all_students,
+        "5": count_total_grades.
+        "6": display_course_summary,
+        "7": save_backup,
+    }
+
+    if choice == "8":
+        print("Goodbye.")
+        break
+
+    # Execute selected action if valid
+    action = actions.get(choice)
+
+    if action:
+        action()
+    else:
+        print("Invalid choice.")
 
 if __name__ == "__main__":
     main()
